@@ -1,3 +1,4 @@
+import random
 """
 class Cat:
     # KONŠTRUKTOR
@@ -84,7 +85,7 @@ class Kalulacka:
 kalkulacka = Kalulacka()
 
 print(kalkulacka)
-"""
+
 import random
 
 
@@ -105,6 +106,105 @@ kocka2 = NejakyObjekt()
 print("Kocka 2:")
 for x in range(10):
     kocka2.hod_kockou()
+
+
+class Clovek:
+
+    def __init__(self, meno, unava=0):
+        self.unava = unava
+        self.meno = meno
+        
+    def behat_1km(self):
+        self.unava += 1
+        
+    def spat_1h(self):
+        if self.unava >= 10:
+            self.unava -= 10
+        else:
+            self.unava = 0
+
+    def __str__(self):
+        return f"{self.meno} {self.unava}"
+
+clovek = Clovek("Marek")
+
+for m in range(30):
+    clovek.behat_1km()
+    print(clovek)
+    if clovek.unava == 20:
+        print("som unaveny")
+        nieco = input("chces spat? ")
+        if nieco == "jj":
+            clovek.spat_1h()
+            continue
+        if nieco == "nn":
+            break
+
+
+
+class RandomSentenceGenerator:
+
+
+    def __init__(self):
+        self.prid_m = ("dobrý", "veľký", "malý", "vysoký", "múdry")
+        self.podst_m = ("Marek", "Jaro", "Kubo", "Timo", "Šimon", "Mário")
+        self.prisl = ("pekne", "škaredo", "hlúpo", "rád", "odvážne")
+        self.sloveso = ("programoval", "sa učil", "sa hral", "behal", "ťukal do klavesnice")
+        self.miesto = ("doma", "vonku", "v škole", "na mesiaci", "v nočnom klube")
+
+
+
+    def __str__(self):
+        return f"{random.choice(self.prid_m)} {random.choice(self.podst_m)} {random.choice(self.prisl)} {random.choice(self.sloveso)} {random.choice(self.miesto)}"
+
+
+
+rsg = RandomSentenceGenerator()
+for i in range(10):
+    print(rsg)
+"""
+nieco = ""
+class Auto:
+    def __init__(self, spz, farba):
+        self.spz = spz
+        self.farba = farba
+
+    def zaparkuj(self):
+        global nieco
+        nieco = "zaparkovane"
+
+auto1 = Auto("KM999BA", "sivá")
+auto2 = Auto("ZA457HP", "s")
+auto3 = Auto("CA540CH", "m")
+auto1.zaparkuj()
+auta = (auto1, auto2, auto3)
+
+randomnieco = random.choice(auta)
+
+x = []
+if nieco != "":
+    x.append(randomnieco.spz)
+
+
+class Garaz:
+    def __str__(self):
+        return f"v garazi je auto {x[0]}"
+
+garaz = Garaz()
+
+
+print(garaz)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
